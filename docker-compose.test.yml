@@ -1,10 +1,10 @@
 version: "3.5"
 networks:
-    flask-api-test-network:
-        name: flask-api-test-network
+    yggdrasil-api-test-network:
+        name: yggdrasil-api-test-network
 services:
     db-mysql-test:
-        container_name: flask-api-test-db
+        container_name: yggdrasil-api-test-db
         image: mysql:latest
         command: --init-file /usr/src/app/init.sql
         volumes:
@@ -19,18 +19,18 @@ services:
             MYSQL_USER: <USER>
             MYSQL_PASSWORD: <PASSWORD>
         networks:
-            - flask-api-test-network
+            - yggdrasil-api-test-network
 
-    flask-api-test:
-        container_name: flask-api-test
+    yggdrasil-api-test:
+        container_name: yggdrasil-api-test
         build:
             context: ./api
             dockerfile: Dockerfile.test
-        image: treed1104/flask-api-test:latest
+        image: treed1104/yggdrasil-api-test:latest
         restart: always
         links:
             - db-mysql
         ports:
             - "5000:5000"
         networks:
-            - flask-api-test-network
+            - yggdrasil-api-test-network
