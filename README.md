@@ -1,8 +1,10 @@
-# Flask REST API template
-## What Is This Template?
-This template is the base configuration of the RESTful Flask services we deploy as part of the Asgard System Stack.
+# Yggdrasil API
+## What is Yggdrasil?
+Yggdrasil is a content carousel display system, used for displaying carousels of pictures, videos, twitter feeds, and elements of the other systems within the Asgard System Stack.
+Yggdrasil's back-end is a REST API microservice written in Python (v3), using the Flask microframework. The application was designed as a scalable microservice, providing reusable functionality within our internal System stack, Asgard.
 
-The API itself is written in Python (V3), using the Flask web microframework and its RESTful extension. The service was designed as a scalable microservice, providing reusable functionality within the system stack.
+
+Yggdrasil takes its name from Norse Mythology, where Yggdrasil is an "immense mythical tree that plays a central role in Norse cosmology, where it connects the Nine Worlds". The name was chosen as the system is designed to be able to pull data in from any of the other systems within the stack.
 
 <br>
 
@@ -45,7 +47,7 @@ Webargs handles the parameter parsing from the endpoint URLs to usable data with
 Marshmellow is a dependency of Webargs, we had to freeze this at this version due to something on their end stopping working correctly.
 
 ### API - Nose2 - 0.9.1
-Nose2 is an extension of the Python Unittest module, we use this as part of our unit, feature and integration testing. The project is set to export the results of these tests as JUnit XML files.
+Nose2 is an extension of the Python Unit-test module, we use this as part of our unit, feature and integration testing. The project is set to export the results of these tests as JUnit XML files.
 
 <br>
 
@@ -57,3 +59,28 @@ Batch Install the Pip3 modules at their frozen version by the following commands
 ```pip3
 pip3 install -r api/requirements.txt
 ```
+
+<br>
+
+---
+
+## Testing
+Under Construction
+
+<br>
+
+---
+
+## Installation
+Under Construction
+
+<br>
+
+---
+
+## Usage Guide - API Interactions and Endpoints
+Under Construction
+
+<br>
+
+---
