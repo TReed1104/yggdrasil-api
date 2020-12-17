@@ -139,3 +139,50 @@ Example Response:
     }
 }
 ```
+
+### Endpoint - contents List
+Usage:
+```
+<server_address>/yggdrasil-api/carouselcontent
+
+Supported HTTP Methods
+* GET
+```
+
+params:
+```
+carousel - (Optional) String name of the carousel to list the contents from.
+```
+
+#### GET method
+The GET method for the contents list endpoint returns a JSON array listing the contents for a given carousel.
+
+Usage:
+```
+GET -> <server_address>/yggdrasil-api/carouselcontent
+GET -> <server_address>/yggdrasil-api/carouselcontent?carousel=carousel_example
+```
+
+Example Response:
+```JSON
+{
+    "meta":{},
+    "links":{
+        "self": "http://yggdrasil-api/carouselcontent"
+    },
+    "data": {
+        "carousel_content":[
+            {
+                "carousel": "Example Carousel",
+                "carousel_id": 1,
+                "id": 1,
+                "interval": 15000,
+                "is_enabled": true,
+                "location": "Room A",
+                "name": "Content Slide 1",
+                "type": "mimir"
+            }
+        ]
+    }
+}
+```
