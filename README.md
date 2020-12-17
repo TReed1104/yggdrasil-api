@@ -322,3 +322,174 @@ Response Codes:
 404 - Carousel not found
 422 - Invalid Parameters
 ```
+
+### Endpoint - Content Handler
+Usage:
+```
+<server_address>/yggdrasil-api/content_handler
+
+Supported HTTP Methods
+* GET
+* POST
+* PUT
+* DELETE
+```
+
+params:
+
+GET
+```
+id - The integer id of the content item to get
+```
+
+POST
+```
+carousel - the carousel to link the content to
+name - The name of the content item
+type - What type is the content? An image, video, Mimir timetable or Heimdall availability map
+location - Location of the content item - Where is the picture in the content folder? what timetable to display?
+interval - How long is the content item to be displayed for in the carousel - in milliseconds
+enabled - toggle if the content item be shown in the carousel
+```
+
+PUT
+```
+id - The integer id of the content item to update
+carousel - the carousel to link the content to
+name - The name of the content item
+type - What type is the content? An image, video, Mimir timetable or Heimdall availability map
+location - Location of the content item - Where is the picture in the content folder? what timetable to display?
+interval - How long is the content item to be displayed for in the carousel - in milliseconds
+enabled - toggle if the content item be shown in the carousel
+```
+
+DELETE
+```
+id - The integer id of the content item to delete
+```
+
+#### GET method
+The GET method for the content_handler endpoint returns a JSON object representing a serialised version of the content.
+
+Usage:
+```
+GET -> <server_address>/yggdrasil-api/content_handler?id=1
+```
+
+Response Codes:
+```
+200 - Ok
+404 - content not found
+422 - Invalid Parameters
+```
+
+Example Response:
+```JSON
+ {
+    "meta":{},
+    "links":{
+        "self": "http://yggdrasil-api:5000/content_handler?id=1"
+    },
+    "data":{
+        "content":{
+            "carousel": "Example Carousel",
+            "carousel_id": 1,
+            "id": 1,
+            "interval": 15000,
+            "is_enabled": true,
+            "location": "Timetable A",
+            "name": "Example Timetable",
+            "type": "mimir"
+        }
+    }
+}
+```
+
+#### POST method
+The POST method for the content_handler endpoint allows the creation of a new content.
+
+Usage:
+```
+POST -> <server_address>/yggdrasil-api/content_handler
+```
+
+Response Codes:
+```
+201 - Created
+422 - Invalid Parameters
+404 - Carousel not found
+```
+
+Example Request Body:
+```JSON
+{
+    "carousel": "Example Carousel",
+    "name": "Example Mimir Item",
+    "type": "picture",
+    "location": "content/example.jpg",
+    "interval": 15000,
+    "enabled": true
+}
+
+{
+    "carousel": "Example Carousel",
+    "name": "Example Mimir Item",
+    "type": "mimir",
+    "location": "Timetable A",
+    "interval": 30000,
+    "enabled": true
+}
+
+{
+    "carousel": "Example Carousel",
+    "name": "Example Heimdall Item",
+    "type": "heimdall",
+    "location": "Room A",
+    "interval": 30000,
+    "enabled": true
+}
+```
+
+#### PUT method
+The PUT method for the content_handler endpoint allows for changes to be made to a content's data.
+
+Usage:
+```
+PUT -> <server_address>/yggdrasil-api/content_handler
+```
+
+Response Codes:
+```
+202 - Accepted
+404 - Carousel not found
+404 - Content not found
+422 - Invalid Parameters
+```
+
+Example Request Body:
+```JSON
+{
+    "id": 1,
+    "carousel": "Example Carousel",
+    "name": "Example Mimir Item Updated",
+    "type": "mimir",
+    "location": "Timetable C",
+    "interval": 15000,
+    "enabled": false
+}
+```
+
+#### DELETE method
+The DELETE method for the content_handler endpoint allows for the deletion of a specified content.
+
+Usage:
+```
+DELETE -> <server_address>/yggdrasil-api/content_handler?id=1
+```
+
+Response Codes:
+```
+202 - Success
+404 - Content not found
+422 - Invalid Parameters
+```
