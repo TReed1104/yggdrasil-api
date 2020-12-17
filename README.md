@@ -79,7 +79,23 @@ Under Construction
 ---
 
 ## Usage Guide - API Interactions and Endpoints
-Under Construction
+
+### Exposed Endpoints
+Valid Endpoints
+```
+<server_address>/yggdrasil-api/carousels
+<server_address>/yggdrasil-api/carouselcontent
+<server_address>/yggdrasil-api/carousel_handler
+<server_address>/yggdrasil-api/content_handler
+```
+
+Example Endpoints
+```
+10.5.11.173/yggdrasil-api/carousels
+10.5.11.173/yggdrasil-api/carouselcontent
+10.5.11.173/yggdrasil-api/carousel_handler
+10.5.11.173/yggdrasil-api/content_handler
+```
 
 <br>
 
