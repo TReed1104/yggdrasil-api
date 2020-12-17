@@ -186,3 +186,139 @@ Example Response:
     }
 }
 ```
+
+### Endpoint - Carousel Handler
+Usage:
+```
+<server_address>/yggdrasil-api/carousel_handler
+
+Supported HTTP Methods
+* GET
+* POST
+* PUT
+* DELETE
+```
+
+params:
+
+GET
+```
+id - The integer id of the carousel to get
+name - The friendly name for the carousel (id takes priority)
+```
+
+POST
+```
+name - The friendly name for the carousel
+show_sidebar - Toggles the sidebar on the carousel (displays Uni logo, date and time)
+```
+
+PUT
+```
+id - The integer id of the carousel to update
+show_sidebar - Toggles the sidebar on the carousel (displays Uni logo, date and time)
+new_name - The new name for renaming the carousel
+```
+
+DELETE
+```
+id - The integer id of the carousel to delete
+```
+
+#### GET method
+The GET method for the carousel_handler endpoint returns a JSON object representing a serialised version of the carousel.
+
+Usage:
+```
+GET -> <server_address>/yggdrasil-api/carousel_handler?id=1
+GET -> <server_address>/yggdrasil-api/carousel_handler?name=example_carousel
+```
+
+Response Codes:
+```
+200 - Ok
+404 - carousel not found
+422 - Invalid Parameters
+```
+
+Example Response:
+```JSON
+{
+    "meta":{},
+    "links":{
+        "self": "http://yggdrasil-api:5000/carousel_handler?id=1"
+    },
+    "data":{
+        "carousel":{
+            "content":[],
+            "id": 1,
+            "name": "Example Carousel",
+            "show_sidebar": true,
+            "total_duration": 30000
+        }
+    }
+}
+```
+
+#### POST method
+The POST method for the carousel_handler endpoint allows the creation of a new carousel.
+
+Usage:
+```
+POST -> <server_address>/yggdrasil-api/carousel_handler
+```
+
+Response Codes:
+```
+201 - Created
+422 - Carousel of that name already exists
+422 - Invalid Parameters
+```
+
+Example Request Body:
+```JSON
+{
+    "name": "Example carousel",
+    "show_sidebar": true
+}
+```
+
+#### PUT method
+The PUT method for the carousel_handler endpoint allows for changes to be made to a carousel's data.
+
+Usage:
+```
+PUT -> <server_address>/yggdrasil-api/carousel_handler
+```
+
+Response Codes:
+```
+202 - Accepted
+405 - Carousel does not exist
+422 - Carousel of that name already exists
+422 - Invalid Parameters
+```
+
+Example Request Body:
+```JSON
+{
+    "id": 1,
+    "name": "Renamed Example carousel",
+    "show_sidebar": true
+}
+```
+
+#### DELETE method
+The DELETE method for the carousel_handler endpoint allows for the deletion of a specified carousel.
+
+Usage:
+```
+DELETE -> <server_address>/yggdrasil-api/carousel_handler?id=1
+```
+
+Response Codes:
+```
+202 - Success
+404 - Carousel not found
+422 - Invalid Parameters
+```
