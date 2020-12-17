@@ -97,6 +97,45 @@ Example Endpoints
 10.5.11.173/yggdrasil-api/content_handler
 ```
 
-<br>
+### Endpoint - Carousels List
+Usage:
+```
+<server_address>/yggdrasil-api/carousels
 
----
+Supported HTTP Methods
+* GET
+```
+
+params:
+```
+N/A
+```
+
+#### GET method
+The GET method for the carousel list endpoint returns a JSON array listing the carousels registered with yggdrasil.
+
+Usage:
+```
+GET -> <server_address>/yggdrasil-api/carousels
+```
+
+Example Response:
+```JSON
+{
+    "meta":{},
+    "links":{
+        "self": "http://yggdrasil-api/carousels"
+    },
+    "data": {
+        "carousels":[
+            {
+                "content": [],
+                "id": 1,
+                "name": "Example Carousel",
+                "show_sidebar": true,
+                "total_duration": 30000
+            }
+        ]
+    }
+}
+```
